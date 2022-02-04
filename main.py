@@ -97,7 +97,7 @@ zoom_level = 12
 midpoint = (np.average(data["latitude"]), np.average(data["longitude"]))
 
 with row2_1:
-    st.write("**All New York City from %i:00 and %i:00**" % (hour_selected, (hour_selected + 1) % 24))
+    st.write("**マグニチュードの範囲 %i:00 ~ %i:00**" % (mag_selected, 8))
     map(data, midpoint[0], midpoint[1], zoom_level)
 
 with row2_2:
