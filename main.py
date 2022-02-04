@@ -97,7 +97,7 @@ midpoint = (np.average(data["latitude"]), np.average(data["longitude"]))
 
 with row2_1:
     st.write("**マグニチュードの範囲 %i ~ %i**" % (mag_selected, 8))
-    map(data, midpoint[0], midpoint[1], zoom_level)
+    map(data, midpoint[0], midpoint[1], 8)
 
 with row2_2:
     st.write("**東京**")
@@ -111,29 +111,27 @@ with row2_4:
     st.write("**博多**")
     map(data, hakata[0],hakata[1], zoom_level)
 
-# # FILTERING DATA FOR THE HISTOGRAM
-# filtered = data[
-#     (data[DATE_TIME].dt.hour >= hour_selected) & (data[DATE_TIME].dt.hour < (hour_selected + 1))
-#     ]
+# FILTERING DATA FOR THE HISTOGRAM
+filtered = data[data['mag'] >= mag_selected]
 
-# hist = np.histogram(filtered[DATE_TIME].dt.minute, bins=60, range=(0, 60))[0]
+hist = np.histogram(filtered['mag'], bins=8, range=(0, 60))[0]
 
-# chart_data = pd.DataFrame({"minute": range(60), "mag": hist})
+chart_data = pd.DataFrame({"minute": range(60), "mag": hist})
 
-# # LAYING OUT THE HISTOGRAM SECTION
+# LAYING OUT THE HISTOGRAM SECTION
 
-# st.write("")
+st.write("")
 
-# st.write("**Breakdown of earthquake per minute between %i:00 and %i:00**" % (hour_selected, (hour_selected + 1) % 24))
+st.write("**earthquake between %i ~ %i**" % (mag_selected,8))
 
-# st.altair_chart(alt.Chart(chart_data)
-#     .mark_area(
-#         interpolate='step-after',
-#     ).encode(
-#         x=alt.X("minute:Q", scale=alt.Scale(nice=False)),
-#         y=alt.Y("pickups:Q"),
-#         tooltip=['depth', 'mag']
-#     ).configure_mark(
-#         opacity=0.2,
-#         color='red'
-#     ), use_container_width=True)
+st.altair_chart(alt.Chart(chart_data)
+    .mark_area(
+        interpolate='step-after',
+    ).encode(
+        x=alt.X("minute:Q", scale=alt.Scale(nice=False)),
+        y=alt.Y("pickups:Q"),
+        tooltip=['depth', 'mag']
+    ).configure_mark(
+        opacity=0.2,
+        color='red'
+    ), use_container_width=True)
