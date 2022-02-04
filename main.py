@@ -98,7 +98,7 @@ midpoint = (np.average(data["latitude"]), np.average(data["longitude"]))
 
 with row2_1:
     st.write("**All New York City from %i:00 and %i:00**" % (hour_selected, (hour_selected + 1) % 24))
-    map(data, la_guardia[0],la_guardia[1], 11)
+    map(data, midpoint[0], midpoint[1], zoom_level)
 
 with row2_2:
     st.write("**La Guardia Airport**")
