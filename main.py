@@ -83,6 +83,7 @@ with row1_2:
 # FILTERING DATA BY HOUR SELECTED
 data = data[data[DATE_TIME].dt.hour == hour_selected]
 
+# show data as a table
 st.dataframe(data.style.highlight_max(axis=0))
 
 # LAYING OUT THE MIDDLE SECTION OF THE APP WITH THE MAPS
@@ -97,7 +98,7 @@ midpoint = (np.average(data["latitude"]), np.average(data["longitude"]))
 
 with row2_1:
     st.write("**All New York City from %i:00 and %i:00**" % (hour_selected, (hour_selected + 1) % 24))
-    map(data, midpoint[0], midpoint[1], 11)
+    map(data, la_guardia[0],la_guardia[1], 11)
 
 with row2_2:
     st.write("**La Guardia Airport**")
