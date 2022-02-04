@@ -28,8 +28,8 @@ st.set_page_config(layout="wide")
 DATE_TIME = "time"
 
 @st.experimental_memo
-def load_data(nrows):
-    data = pd.read_csv('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.csv', nrows=nrows)
+def load_data():
+    data = pd.read_csv('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.csv')
     data = data[['time','latitude','longitude','depth','mag']]
     data = data.dropna()
     lowercase = lambda x: str(x).lower()
@@ -37,7 +37,7 @@ def load_data(nrows):
     data[DATE_TIME] = pd.to_datetime(data[DATE_TIME])
     return data
 
-data = load_data(100000)
+data = load_data()
 
 # CREATING FUNCTION FOR MAPS
 
