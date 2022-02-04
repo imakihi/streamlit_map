@@ -128,7 +128,7 @@ st.altair_chart(alt.Chart(chart_data)
     .mark_area(
         interpolate='step-after',
     ).encode(
-        x=alt.X("マグニチュード:Q", scale=alt.Scale(nice=True)),
+        x=alt.X("マグニチュード:Q"),
         y=alt.Y("頻度:Q"),
         tooltip=["マグニチュード","頻度"]
     ).configure_mark(
