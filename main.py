@@ -114,9 +114,9 @@ with row2_4:
 # FILTERING DATA FOR THE HISTOGRAM
 filtered = data[data['mag'] >= mag_selected]
 
-hist = np.histogram(filtered['mag'], bins=8, range=(0, 60))[0]
+hist = np.histogram(filtered['mag'], bins=8)[0]
 
-chart_data = pd.DataFrame({"minute": range(60), "mag": hist})
+chart_data = pd.DataFrame({"マグニチュード": range(1,9), "頻度": hist})
 
 # LAYING OUT THE HISTOGRAM SECTION
 
@@ -128,9 +128,9 @@ st.altair_chart(alt.Chart(chart_data)
     .mark_area(
         interpolate='step-after',
     ).encode(
-        x=alt.X("minute:Q", scale=alt.Scale(nice=False)),
-        y=alt.Y("pickups:Q"),
-        tooltip=['depth', 'mag']
+        x=alt.X("マグニチュード:Q", scale=alt.Scale(nice=False)),
+        y=alt.Y("頻度:Q"),
+        tooltip=['mag', 'depth']
     ).configure_mark(
         opacity=0.2,
         color='red'
