@@ -56,7 +56,7 @@ def map(data, lat, lon, zoom):
                 data=data,
                 get_position=["longitude", "latitude"],
                 radius=100,
-                elevation_scale=4,
+                elevation_scale=4000,
                 elevation_range=[0, 1000],
                 pickable=True,
                 extruded=True,
@@ -69,19 +69,19 @@ row1_1, row1_2 = st.columns((2,3))
 
 with row1_1:
     st.title("USGS地震データ")
-    hour_selected = st.slider("時間を選んでください", 0, 23)
+    mag_selected = st.slider("マグニチュードを選んでください", 0, 8)
 
 with row1_2:
     st.write(
     """
     ##
-    スライドバーで、地震発生時間を絞り込めます。
+    スライドバーで、表示するマグニチュードの最低値を絞り込めます。
     """)
 
 
 
 # FILTERING DATA BY HOUR SELECTED
-data = data[data[DATE_TIME].dt.hour == hour_selected]
+data = data[data['mag'] >= mag_selected]
 
 # show data as a table
 st.dataframe(data.style.highlight_max(axis=0))
