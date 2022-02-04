@@ -78,8 +78,12 @@ with row1_2:
     スライドバーで、地震発生時間を絞り込めます。
     """)
 
+
+
 # FILTERING DATA BY HOUR SELECTED
 data = data[data[DATE_TIME].dt.hour == hour_selected]
+
+st.dataframe(data.style.highlight_max(axis=0))
 
 # LAYING OUT THE MIDDLE SECTION OF THE APP WITH THE MAPS
 row2_1, row2_2, row2_3, row2_4 = st.columns((2,1,1,1))
