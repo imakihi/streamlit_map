@@ -29,7 +29,7 @@ DATE_TIME = "time"
 
 @st.experimental_memo
 def load_data():
-    data = pd.read_csv('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.csv')
+    data = pd.read_csv('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv')
     data = data[['time','latitude','longitude','depth','mag']]
     data = data.dropna()
     lowercase = lambda x: str(x).lower()
