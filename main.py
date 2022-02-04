@@ -56,7 +56,7 @@ def map(data, lat, lon, zoom):
                 data=data,
                 get_position=["longitude", "latitude"],
                 auto_highlight=True,
-                get_radius=1000,
+                get_radius=10000,
                 get_fill_color='[180, 0, 200, 140]',
                 pickable=True
             ),
