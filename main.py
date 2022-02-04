@@ -52,14 +52,13 @@ def map(data, lat, lon, zoom):
         },
         layers=[
             pdk.Layer(
-                "HexagonLayer",
+                "ScatterplotLayer",
                 data=data,
                 get_position=["longitude", "latitude"],
-                radius=100,
-                elevation_scale=4000,
-                elevation_range=[0, 1000],
-                pickable=True,
-                extruded=True,
+                auto_highlight=True,
+                get_radius=1000,
+                get_fill_color='[180, 0, 200, 140]',
+                pickable=True
             ),
         ]
     ))
