@@ -92,7 +92,7 @@ row2_1, row2_2, row2_3, row2_4 = st.columns((2,1,1,1))
 tokyo= [35.652832, 139.839478]
 sapporo = [43.066666, 141.350006]
 hakata = [33.604282, 130.397751]
-zoom_level = 12
+zoom_level = 10
 midpoint = (np.average(data["latitude"]), np.average(data["longitude"]))
 
 with row2_1:
