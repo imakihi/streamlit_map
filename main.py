@@ -122,7 +122,7 @@ chart_data = pd.DataFrame({"マグニチュード": range(1,9), "頻度": hist})
 
 st.write("")
 
-st.write("**earthquake between %i ~ %i**" % (mag_selected,8))
+st.write("**マグニチュードの範囲 %i ~ %i**" % (mag_selected,8))
 
 st.altair_chart(alt.Chart(chart_data)
     .mark_area(
@@ -130,7 +130,7 @@ st.altair_chart(alt.Chart(chart_data)
     ).encode(
         x=alt.X("マグニチュード:Q", scale=alt.Scale(nice=False)),
         y=alt.Y("頻度:Q"),
-        tooltip=['mag', 'depth']
+        tooltip=['mag']
     ).configure_mark(
         opacity=0.2,
         color='red'
